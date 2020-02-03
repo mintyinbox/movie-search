@@ -40,6 +40,12 @@
       fetch(`http://www.omdbapi.com/?t=${document.getElementById('title').value}&apikey=trilogy`)
         .then(r => r.json())
         .then(({ Title, Year, Director, Poster, Plot }) => {
+          movie = {
+            title: Title,
+            year: Year,
+            director: Director,
+            plot: Plot
+          }
           document.getElementById('movie').innerHTML = `
           <div class="card">
             <div class="card-image">
@@ -67,10 +73,10 @@ document.addEventListener('click', event => {
         movieElem.className = 'card'
         movieElem.innerHTML = `
             <div class="card-content">
-              <h3>${movie.Title}</h3>
-              <h4>Directed by ${movie.Director}</h4>
-              <h5>Year: ${movie.Year}</h5>
-              <p>${movie.Plot}</p>
+              <h3>${movie.title}</h3>
+              <h4>Directed by ${movie.director}</h4>
+              <h5>Year: ${movie.year}</h5>
+              <p>${movie.plot}</p>
             </div>
             <div class="card-action">
               <button class="btn waves-effect waves-light removeWatchlist">Remove from Watchlist</button>
